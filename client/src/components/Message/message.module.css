@@ -1,0 +1,14 @@
+.message{
+    background-color: rgba(79, 197, 206, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.message_username{
+    background-color: rgba(255, 100, 0, 0.2);
+    text-align: start;
+}
+
+.message_msg{
+    text-align: start;
+}

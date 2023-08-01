@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import {io} from "socket.io-client";
 
 function Home() {
-  fetch("http:localhost:3000/sala");
+  //fetch("http:localhost:3000/sala");
   return (
     <>
       <div>
-        ss
+        <button>Chat</button>
       </div>
     </>
   )
