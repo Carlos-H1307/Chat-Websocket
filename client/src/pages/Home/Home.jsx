@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function Home() {
   //fetch("http:localhost:3000/sala");
   return (
     <>
       <div>
-        <button>Chat</button>
+        <Link to="/chat">Chat</Link>
       </div>
     </>
   )

@@ -1,26 +1,20 @@
 const express           = require("express");
-const { createServer }  = require("http");
-const { Server }        = require("socket.io");
 const app               = express();
-const httpServer        = createServer(app);
-const io                = new Server(httpServer, { cors: { origin: "*" } });
 const cors              = require('cors');
 const Routes            = require('./routes/routes');
+const cookieParser      = require('cookie-parser')
+require('dotenv').config();
 
-app.use(cors());
+app.use(cookieParser());
+app.use(express.json());
+app.use(cors({
+  credentials:true,
+  origin: 'http://localhost:5173'
+}));
 
-io.on("connection", (socket) => {
-  
-});
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
-
-module.exports = app;
 app.use("/", Routes);
-httpServer.listen(3000, () => {
-  console.log("Rodando na porta 3000");
+
+app.listen(process.env.HTTP_PORT, () => {
+  console.log("Rodando na porta " + process.env.HTTP_PORT );
 });
 

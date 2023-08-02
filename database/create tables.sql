@@ -1,7 +1,11 @@
 create database chat_websoket;
 
 create table if not exists user(
-	username varchar(50) not null,
-    password varchar(20) not null,
-    primary key(username)
+	user_id varchar(40) not null,
+	username varchar(40) not null,
+    password varchar(60) not null,
+
+	primary key(user_id),
+	unique(username)
 );
+select * from user
