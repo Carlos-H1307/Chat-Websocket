@@ -1,14 +1,23 @@
-import { useState } from 'react'
-import {io} from "socket.io-client";
+import { useState } from 'react';
 import Message from '../../components/Message/Message.jsx';
+import socket from '../../services/socket.js';
+import {useAuth} from '../../context/AuthContext';
+import queryString from 'query-string';
 
 function Chat() {
-  // const socket = io("ws://localhost:3000", { cors: { origin: "*" } });
+  const queryParams = queryString.parse(window.location.search);
+  const connected_user_id = queryParams.user;
+
   const [msg, setMsg] = useState("");
 
   const enviarMsg = () => {
-    if(msg){
-      //socket.emit("msg", msg);
+    if(msg && connected_user_id){
+
+      socket.emit("private message", {
+        content: msg,
+        to: connected_user_id
+      });
+
       setMsg("");
     }
   }

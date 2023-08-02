@@ -5,13 +5,14 @@ const AuthContext = createContext('auth');
 
 export const AuthProvider = ({children}) => {
 
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth]           = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser]           = useState(null);
 
   useEffect(() => {
 
-    Api.get('/user').then(() => {
-      console.log("foi ok")
+    Api.get('/user').then((res) => {
+      setUser(res.data.user);
       setAuth(true);
       setIsLoading(false);
     }).catch(() => {
@@ -20,9 +21,8 @@ export const AuthProvider = ({children}) => {
 
   }, [])
 
-
   return (
-    <AuthContext.Provider value={{isAuth: auth, isLoading, setAuth, setIsLoading}}>
+    <AuthContext.Provider value={{isAuth: auth, isLoading, setAuth, setIsLoading, user}}>
       {children}
     </AuthContext.Provider>
   )

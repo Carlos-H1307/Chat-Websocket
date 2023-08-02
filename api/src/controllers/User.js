@@ -5,24 +5,26 @@ const { generateUserSession, decodeUserSession } = require('../util/generators/u
 
 class User {
     async get(req, res) {
-		const { wsToken } = req.cookies
+		const { wsToken } = req.cookies;
 
 		if(!wsToken) {
-			return res.status(401).send()
+			return res.status(401).send();
 		}
 
 		try{
-			const { sub: userId } = decodeUserSession(wsToken)
+			const { sub: userId } = decodeUserSession(wsToken);
 
-			let user_db = await sequelize.query(` select username from user where user_id = '${userId}' `,
+			let user_db = await sequelize.query(` select * from user where user_id = '${userId}' `,
             { type: sequelize.QueryTypes.SELECT });
 
             user_db = user_db[0];
+
+			delete user_db.password;
             
-			res.json({ok: true, data: user_db})
+			res.json({ok: true, user: user_db});
 
 		}catch (e) {
-			return res.status(401)
+			return res.status(401);
 		}
 	}
 
@@ -89,41 +91,40 @@ class User {
 	}
 
     async login(req, res) {
-		const { username, password } = req.body
+		const { username, password } = req.body;
 
 		if(!username) {
-			return res.status(400).json({error: "Invalid username"})
+			return res.status(400).json({error: "Invalid username"});
 		}
 
 		if(!password) {
-			return res.status(400).json({error: "Invalid password"})
+			return res.status(400).json({error: "Invalid password"});
 		}
 
         let user_db = await sequelize.query(`select * from user where username = '${username}' `,
         { type: sequelize.QueryTypes.SELECT });
 
 		if( user_db.length == 0 ) {
-			return res.status(404).json({error: "User not found"})
+			return res.status(404).json({error: "User not found"});
 		}
 
         user_db = user_db[0];
 
 		if(!isPasswordValid(user_db.password, password)){
-            return res.status(400).json({error: 'Invalid password'})
+            return res.status(400).json({error: 'Invalid password'});
 		}
         
-		delete user_db.password
+		delete user_db.password;
         
-		const token = generateUserSession(user_db.user_id)
-        console.log("\n" + token + "\n")
+		const token = generateUserSession(user_db.user_id);
 
 		res.cookie('wsToken', token);
-		res.json({ok: true, data: user_db, token})
+		res.json({ok: true, user: user_db, token});
 	}
 
     async logout(req, res) {
-		res.clearCookie('wsToken')
-		res.send()
+		res.clearCookie('wsToken');
+		res.send();
 	}
 }
 
