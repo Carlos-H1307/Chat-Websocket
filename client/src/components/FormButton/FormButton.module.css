@@ -1,0 +1,22 @@
+.FormButton{
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--font-color);
+
+    width: fit-content;
+    padding: 10px;
+    
+    border: none;
+
+    background-color: var(--secondary-color);
+
+    border: solid rgba(0, 0, 0, 0.2) 1px;
+    border-radius: 2px;
+
+    margin-top: 8px;
+}
+
+.FormButton:hover{
+    color: white;
+    background-color: var(--terciary-color);
+}

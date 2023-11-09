@@ -1,0 +1,32 @@
+@import url(../../index.css);
+
+.FormInputContainer{
+    padding-inline: 8px;
+    padding-block: 8px;
+}
+
+.FormInputIdName{
+    margin-bottom: 10px;
+    color: var(--font-color);
+}
+
+.FormInput{
+    background: none;
+    height: 20px;
+    
+    border-inline: none;
+    border-top: none;
+    border-bottom: solid var(--contrast-primary-color);
+    
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--contrast-primary-color);
+
+    text-align: center;
+}
+
+.FormInput:focus{
+    outline: none;
+    caret-color: var(--contrast-primary-color);
+}
+

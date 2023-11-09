@@ -1,0 +1,10 @@
+@import url(../../index.css);
+
+#LoginContainer{
+    background-color: var(--primary-color);
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

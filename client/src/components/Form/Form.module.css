@@ -1,0 +1,7 @@
+@import url(../../index.css);
+
+.Form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
