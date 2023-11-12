@@ -14,19 +14,24 @@ function Login() {
     const {theme} = useTheme();
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
+    const [nome, setNome] = useState("");
+    const [senha, setSenha] = useState("");
+    
     const login = async (e) => {
       e.preventDefault();
+      let res;
         try{
-          //await Api.post('/user/login', { username, password }, {'Access-Control-Allow-Origin': 'localhost:3000'})
-    
+          const data = { nome, senha };
+
+          res = await Api.post('/auth', data);
+          const obj = res.data;
+          sessionStorage.setItem("token", obj.token);
+
           setAuth(true)
     
           navigate('/home')
         }catch (error) {
-            console.error(error);
+            console.log("Unauthorized");
           //toast.error(e.response.data.error)
         }
       }
@@ -35,8 +40,8 @@ function Login() {
       <div id={styles.LoginMain}>
         <div id={styles.LoginContainer}>
           <Form onSubmit={login}>
-            <FormInput idName={"Username"} type='text' value={username} setValue={setUsername}></FormInput>
-            <FormInput idName={"Password"} type='password' value={password} setValue={setPassword}></FormInput>
+            <FormInput idName={"Username"} type='text' value={nome} setValue={setNome}></FormInput>
+            <FormInput idName={"Password"} type='password' value={senha} setValue={setSenha}></FormInput>
             <FormButton text={"Send"}></FormButton>
           </Form>
           <Link>Register</Link>
