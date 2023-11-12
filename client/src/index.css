@@ -1,4 +1,4 @@
-[theme='dark'] {
+[theme='Dark'] {
   --primary-color: #222;
   --secondary-color: #555;
   --terciary-color: #777;
@@ -13,7 +13,7 @@
   --shadow-primary-color: rgba(255, 255, 255, 0.4);
 }
 
-[theme='light'] {
+[theme='Light'] {
   --primary-color: #f0f8ff;
   --secondary-color: #dbdbdb;
   --terciary-color: #e8e8e8;
@@ -31,6 +31,10 @@
 body{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 700;
+}
+
+a{
+  color: var(--font-color);
 }
 
 .App{

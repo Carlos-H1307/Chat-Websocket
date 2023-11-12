@@ -37,8 +37,9 @@ function Login() {
           <Form onSubmit={login}>
             <FormInput idName={"Username"} type='text' value={username} setValue={setUsername}></FormInput>
             <FormInput idName={"Password"} type='password' value={password} setValue={setPassword}></FormInput>
-            <FormButton text={"Enviar"}></FormButton>
+            <FormButton text={"Send"}></FormButton>
           </Form>
+          <Link>Register</Link>
         </div>
       </div>
     )

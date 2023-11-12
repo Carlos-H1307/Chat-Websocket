@@ -14,11 +14,15 @@ function Header(){
     return(
         <div id={styles.HeaderContainer} is-swiped={isSwiped}>
             <SwipeButton onClick={toggleHeader} isSwiped={isSwiped}></SwipeButton>
-            {/* <div id={styles.SwipeButton} onClick={toggleHeader} is-swiped={isSwiped}/> */}
+            
             <div id={styles.HeaderContent}>
-                <Switch></Switch>
-                <Link to='/home'>Home</Link>
-                <Link to='/chat'>Chat</Link>
+                <div id={styles.HeaderContentSwitch}>
+                    <Switch></Switch>
+                </div>
+                <div id={styles.HeaderContentLinks}>
+                    <Link to='/home'>Home</Link>
+                    <Link to='/chat'>Chat</Link>
+                </div>
             </div>
         </div>
     );

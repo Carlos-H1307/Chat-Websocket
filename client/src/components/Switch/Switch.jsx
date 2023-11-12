@@ -2,10 +2,10 @@ import styles from './Switch.module.css';
 import { useTheme } from '../../context/ThemeContext';
 
 function Switch(){
-    const { toggleTheme } = useTheme();
+    const { toggleTheme, theme } = useTheme();
     return (
         <label htmlFor={styles.InputSlider} id={styles.InputSliderLabel}>
-            toggle
+            {theme}
             <input type='checkbox' id={styles.InputSlider} onClick={toggleTheme}/>
         </label>
     )

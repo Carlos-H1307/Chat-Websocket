@@ -1,13 +1,21 @@
 @import url(../../index.css);
 
 #InputSliderLabel{
+    font-size: 15px;
     padding: 10px;
     color: var(--font-color);
 }
 
+
 #InputSliderLabel:hover{
-    background-color: rgba(255, 0, 0, 0.212);
+    background-color: var(--font-color);
 }
+
+#InputSlider{
+    width: 0px;
+    height: 0px;
+}
+
 
 #InputSlider:checked + #InputSliderLabel {
 }
