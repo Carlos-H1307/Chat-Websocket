@@ -16,6 +16,8 @@
     display: flex;
     flex-direction: row;
     transition: .2s;
+
+    z-index: 1;
 }
 
 #HeaderContent{
@@ -28,7 +30,7 @@
 }
 
 #HeaderContentSwitch{
-    height: 55px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,6 +47,20 @@
 
     height: -webkit-fill-available;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#HeaderContentLinksUnder{  
+    margin-bottom: 20px;
+}
+
+#HeaderContentLinksUnder a{  
+    color: red;
+}
+
+.Link{
     display: flex;
     flex-direction: column;
     align-items: center;

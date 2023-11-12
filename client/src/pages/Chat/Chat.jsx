@@ -4,6 +4,7 @@ import socket from '../../services/socket.js';
 import {useAuth} from '../../context/AuthContext';
 import queryString from 'query-string';
 import styles from './Chat.module.css';
+import FormButton from '../../components/FormButton/FormButton.jsx';
 
 function Chat() {
   const queryParams = queryString.parse(window.location.search);
@@ -45,6 +46,8 @@ function Chat() {
         <div id={styles.InputTextBox}>
           <form onSubmit={enviarMsg} id={styles.InputForm}>
             <input id={styles.InputText} type="text" />
+            <FormButton text='Send'></FormButton>
+            {/* <button type='submit' id={styles.FormButton}>Send</button> */}
           </form>
         </div>
       </div>

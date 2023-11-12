@@ -23,10 +23,11 @@
     color: var(--contrast-primary-color);
 
     text-align: left;
+    
+    outline: none;
 }
 
 .FormInput:focus{
-    outline: none;
     caret-color: var(--contrast-primary-color);
 }
 

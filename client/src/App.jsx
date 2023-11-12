@@ -20,7 +20,6 @@ const App = () => {
     return <div />
   }
   if(isAuth){
-  //if(true){
     return(
       <SocketProvider >
         <div className="App" theme={theme}>
@@ -29,6 +28,7 @@ const App = () => {
             <Routes>
               <Route path="/home" element={<Home/>} />
               <Route path="/chat" element={<Chat/>} />
+              <Route path='/*' element={<Home />} />
             </Routes>
           </Router>
         </div>

@@ -19,16 +19,16 @@ function Login() {
 
     const login = async (e) => {
       e.preventDefault();
-        // try{
-        //   await Api.post('/user/login', { username, password }, {'Access-Control-Allow-Origin': 'localhost:3000'})
+        try{
+          //await Api.post('/user/login', { username, password }, {'Access-Control-Allow-Origin': 'localhost:3000'})
     
-        //   setAuth(true)
+          setAuth(true)
     
-        //   navigate('/home')
-        // }catch (error) {
-        //     console.error(error);
-        //   //toast.error(e.response.data.error)
-        // }
+          navigate('/home')
+        }catch (error) {
+            console.error(error);
+          //toast.error(e.response.data.error)
+        }
       }
 
     return (

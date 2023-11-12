@@ -14,8 +14,9 @@
 }
 
 #Chat{
+    display: flex;
+    flex-direction: column-reverse;
     padding: 20px;
-    background-color: var(--secondary-color);
 
     height: -webkit-fill-available;
 }
@@ -30,39 +31,55 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    
     height: 50px;
-    background-color: var(--secondary-color);
+    /* background-color: var(--secondary-color); */
     padding-inline: 20px;
 }
 
 #InputTextBox{
+    width: 100%;
+}
+
+#InputForm{
+    width: 100%;
+
     display: flex;
+    flex-direction: row;
     align-items: center;
 
-    width: 100%;
+    gap: 10px;
 }
 
 #InputText{
     position: relative;
     height: 20px;
-    font-size: 20px;
-    width: 100%;
-
+    
+    width: -webkit-fill-available;
+    
     background: none;
+    
     border: none;
+    border-bottom: solid var(--font-color);
+    
+    font-size: 20px;
+    color: var(--font-color);
 
-    background-color: var(--terciary-color);
-
-    color: var(--contrast-primary-color);
+    outline: none;
 }
 
-.InputForm{
-    width: 100%;
+#InputText:hover{
+    caret-color: var(--contrast-primary-color);
 }
 
+#FormButton{
+    width: 80px;
+    padding: 5px;
 
-/* .FormInput{
+
+}
+/*
+.FormInput{
     background: none;
     height: 20px;
     
@@ -74,10 +91,7 @@
     font-weight: 700;
     color: var(--contrast-primary-color);
 
-    text-align: center;
+    text-align: left;
 }
 
-.FormInput:focus{
-    outline: none;
-    caret-color: var(--contrast-primary-color);
-} */
+*/
