@@ -1,0 +1,33 @@
+@import url('../../index.css');
+
+[is-swiped='true']{
+    right: 0px;
+}
+[is-swiped='false']{
+    right: -115px;
+}
+
+
+#HeaderContainer{
+    height: 100%;
+    width: 150px;
+    position: fixed;
+
+    display: flex;
+    flex-direction: row;
+    transition: .2s;
+}
+
+#HeaderContent{
+    background-color: var(--primary-color);
+    width: 115px;
+    box-shadow: -5px 0px 10px var(--shadow-primary-color);
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+

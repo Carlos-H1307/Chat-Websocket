@@ -3,6 +3,7 @@ import Message from '../../components/Message/Message.jsx';
 import socket from '../../services/socket.js';
 import {useAuth} from '../../context/AuthContext';
 import queryString from 'query-string';
+import styles from './Chat.module.css';
 
 function Chat() {
   const queryParams = queryString.parse(window.location.search);
@@ -10,32 +11,42 @@ function Chat() {
 
   const [msg, setMsg] = useState("");
 
-  const enviarMsg = () => {
-    if(msg && connected_user_id){
+  const enviarMsg = (e) => {
+    e.preventDefault();
+    console.log("msg")
+    // if(msg && connected_user_id){
 
-      socket.emit("private message", {
-        content: msg,
-        to: connected_user_id
-      });
+    //   socket.emit("private message", {
+    //     content: msg,
+    //     to: connected_user_id
+    //   });
 
-      setMsg("");
-    }
+    //   setMsg("");
+    // }
   }
 
   let messages = ["msg1", "msg2"];
 
   return (
-    <div id="chat">
-      <div id="chat-message-box">
-
-        { messages.map( (msg) => { return( <Message key={msg} /> ) }) }
+    <div id={styles.ChatContainer}>
+      <div id={styles.Chat}>
+        <div id={styles.ChatMessageBox}>
+          { messages.map( (msg) => { return( <Message key={msg} /> ) }) }
+        </div>
+        {/* <div>
+          <input 
+          type="text"
+          value = {msg}
+          onChange={ (e) => setMsg(e.target.value) }/>
+          <button onClick={enviarMsg}>Enviar</button>
+        </div> */}
       </div>
-      <div>
-        <input 
-        type="text"
-        value = {msg}
-        onChange={ (e) => setMsg(e.target.value) }/>
-        <button onClick={enviarMsg}>Enviar</button>
+      <div id={styles.InputTextContainer}>
+        <div id={styles.InputTextBox}>
+          <form onSubmit={enviarMsg} id={styles.InputForm}>
+            <input id={styles.InputText} type="text" />
+          </form>
+        </div>
       </div>
     </div>
   )

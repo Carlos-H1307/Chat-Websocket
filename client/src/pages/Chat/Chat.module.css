@@ -1,0 +1,83 @@
+@import url('../../index.css');
+
+#ChatContainer{
+    background-color: var(--primary-color);
+    
+    display: flex;
+    flex-direction: column;
+    
+    padding-inline: 20px;
+    padding-block: 30px;
+
+    gap: 20px;
+    height: -webkit-fill-available;
+}
+
+#Chat{
+    padding: 20px;
+    background-color: var(--secondary-color);
+
+    height: -webkit-fill-available;
+}
+
+#ChatMessageBox{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#InputTextContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;
+    background-color: var(--secondary-color);
+    padding-inline: 20px;
+}
+
+#InputTextBox{
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+}
+
+#InputText{
+    position: relative;
+    height: 20px;
+    font-size: 20px;
+    width: 100%;
+
+    background: none;
+    border: none;
+
+    background-color: var(--terciary-color);
+
+    color: var(--contrast-primary-color);
+}
+
+.InputForm{
+    width: 100%;
+}
+
+
+/* .FormInput{
+    background: none;
+    height: 20px;
+    
+    border-inline: none;
+    border-top: none;
+    border-bottom: solid var(--contrast-primary-color);
+    
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--contrast-primary-color);
+
+    text-align: center;
+}
+
+.FormInput:focus{
+    outline: none;
+    caret-color: var(--contrast-primary-color);
+} */

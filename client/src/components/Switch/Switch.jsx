@@ -1,7 +1,7 @@
 import styles from './Switch.module.css';
 import { useTheme } from '../../context/ThemeContext';
 
-export const Switch = () => {
+function Switch(){
     const { toggleTheme } = useTheme();
     return (
         <label htmlFor={styles.InputSlider} id={styles.InputSliderLabel}>
@@ -10,3 +10,5 @@ export const Switch = () => {
         </label>
     )
 }
+
+export default Switch;

@@ -6,9 +6,10 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import {useAuth} from "./context/AuthContext";
 import { SocketProvider } from './context/SocketContext';
-import { Switch } from './components/Switch/Switch';
+import Switch from './components/Switch/Switch';
 import { useTheme } from './context/ThemeContext';
 import './index.css';
+import Header from './pages/Header/Header';
 
 const App = () => {
 
@@ -24,6 +25,7 @@ const App = () => {
       <SocketProvider >
         <div className="App" theme={theme}>
           <Router>
+            <Header/>
             <Routes>
               <Route path="/home" element={<Home/>} />
               <Route path="/chat" element={<Chat/>} />
@@ -37,12 +39,13 @@ const App = () => {
   return (
     <div className="App" theme={theme}>
       <Router>
+        <Header/>
         <Routes>
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path='/*' element={<Login />} />
         </Routes>
       </Router>
-      <Switch/>
     </div>
   )
 }

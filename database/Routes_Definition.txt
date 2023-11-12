@@ -1,0 +1,37 @@
+/user
+
+/user/register - POST(email, password)
+ 201(created): cria user_login
+
+/user/login - POST(email, password)
+ 204(no-content):  user_info ainda não cadastrado, mas já com token 
+ sessão
+ 202(Accepted): envia resposta com token de sessão no browser/header
+
+/user/logout - GET
+ 200(ok): envia resposta sem token de sessão
+
+/user/authenticate - POST(username, token)
+ 201(created): cria user_info, com bio sendo nulo; o token serve pra verificar
+ se o usuario tem permissão para cria o username
+
+/user/{user_id} - PATCH
+  200(ok): atualiza a bio do user_info
+
+
+----------------------------------------------------------------------------------------
+/contact
+
+/contact?username={username} - GET
+
+
+/contact/{contact_id}
+
+----------------------------------------------------------------------------------------
+/message
+
+/message/{contact_id} - GET
+
+/message/{private_message_id} - POST(user_id, content)
+  201: cria private_message
+

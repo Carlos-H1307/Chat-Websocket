@@ -32,6 +32,7 @@ function Login() {
       }
 
     return (
+      <div id={styles.LoginMain}>
         <div id={styles.LoginContainer}>
           <Form onSubmit={login}>
             <FormInput idName={"Username"} type='text' value={username} setValue={setUsername}></FormInput>
@@ -39,6 +40,7 @@ function Login() {
             <FormButton text={"Enviar"}></FormButton>
           </Form>
         </div>
+      </div>
     )
 }
 

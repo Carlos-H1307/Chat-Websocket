@@ -8,7 +8,7 @@
     
     border: none;
 
-    background-color: var(--secondary-color);
+    background-color: var(--font-color-hover);
 
     border: solid rgba(0, 0, 0, 0.2) 1px;
     border-radius: 2px;
@@ -17,6 +17,6 @@
 }
 
 .FormButton:hover{
-    color: white;
-    background-color: var(--terciary-color);
+    color: var(--font-color-hover);
+    background-color: var(--font-color);
 }

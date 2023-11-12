@@ -62,3 +62,10 @@ CREATE TABLE group_user(
   FOREIGN KEY(group_id) REFERENCES user_info(user_id)
 
 );
+
+CREATE TABLE user_session(
+  user_session_token VARCHAR(50) NOT NULL,
+  user_id VARCHAR(50) NOT NULL,
+  PRIMARY KEY(user_session_token),
+  FOREIGN KEY(user_id) REFERENCES user_info(user_id)
+)

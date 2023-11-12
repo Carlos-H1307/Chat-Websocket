@@ -7,7 +7,7 @@ import { ThemeProvider } from './context/ThemeContext'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
     <ThemeProvider>
-      <App/>
+      <App />
     </ThemeProvider>
   </AuthProvider>
 )

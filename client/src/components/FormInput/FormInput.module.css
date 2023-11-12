@@ -22,7 +22,7 @@
     font-weight: 700;
     color: var(--contrast-primary-color);
 
-    text-align: center;
+    text-align: left;
 }
 
 .FormInput:focus{
