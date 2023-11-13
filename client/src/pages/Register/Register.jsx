@@ -12,14 +12,18 @@ function Register() {
     const {setAuth} = useAuth();
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [email, setEmail] = useState('');
+    const [nome, setNome] = useState('');
+    const [senha, setSenha] = useState('');
+    const [senhaConfirmation, setSenhaConfirmation] = useState('');
 
     async function register(e){
         e.preventDefault();
+
         try{
-            const data = { nome, senha };
+            const data = { nome, senha, email };
+            const res = await Api.post('/register', data);
+            console.log(res);
             /*const userResponse = await Api.post('/user', {username, password, passwordConfirmation});
             if(userResponse.status !== 201) {
               alert('Erro ao criar usuário');
@@ -39,10 +43,11 @@ function Register() {
         <div id={styles.LoginMain}>
             <div id={styles.LoginContainer}>
                 <Form onSubmit={register}>
-                    <FormInput idName={"Username"} type='text' value={username} setValue={setUsername}></FormInput>
-                    <FormInput idName={"Password"} type='password' value={password} setValue={setPassword}></FormInput>
-                    <FormInput idName={"Confirmation"} type='password' value={passwordConfirmation} setValue={setPassword}>Confirm</FormInput>
-                    <FormButton text={"Send"}></FormButton>
+                    <FormInput idName={"nome"} type='text' value={nome} setValue={setNome}>Username</FormInput>
+                    <FormInput idName={"email"} type='text' value={email} setValue={setEmail}>Email</FormInput>
+                    <FormInput idName={"senha"} type='password' value={senha} setValue={setSenha}>Password</FormInput>
+                    <FormInput idName={"senhaConfirmation"} type='password' value={senhaConfirmation} setValue={setSenhaConfirmation}>Confirm Password</FormInput>
+                    <FormButton>Send</FormButton>
                 </Form>
                 <Link to={'/login'}>Login</Link>
             </div>

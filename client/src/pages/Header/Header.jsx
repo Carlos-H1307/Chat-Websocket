@@ -1,13 +1,14 @@
 import styles from './Header.module.css';
 import Switch from '../../components/Switch/Switch';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SwipeButton from '../../components/Buttons/SwipeButton/SwipeButton';
 import {useAuth} from '../../context/AuthContext';
 
 function Header(){
     const [isSwiped, setSwiped] = useState('true');
     const { setAuth } = useAuth();
+    const navigate = useNavigate();
 
     function toggleHeader(){
         isSwiped=='true' ? setSwiped('false') : setSwiped('true');
@@ -15,6 +16,7 @@ function Header(){
 
     function logout(){
         setAuth(false);
+        navigate('/login');
     }
 
     return(

@@ -40,9 +40,9 @@ function Login() {
       <div id={styles.LoginMain}>
         <div id={styles.LoginContainer}>
           <Form onSubmit={login}>
-            <FormInput idName={"Username"} type='text' value={nome} setValue={setNome}></FormInput>
-            <FormInput idName={"Password"} type='password' value={senha} setValue={setSenha}></FormInput>
-            <FormButton text={"Send"}></FormButton>
+            <FormInput idName={"Username"} type='text' value={nome} setValue={setNome}>Username</FormInput>
+            <FormInput idName={"Password"} type='password' value={senha} setValue={setSenha}>Password</FormInput>
+            <FormButton>Send</FormButton>
           </Form>
           <Link to={'/register'}>Register</Link>
         </div>

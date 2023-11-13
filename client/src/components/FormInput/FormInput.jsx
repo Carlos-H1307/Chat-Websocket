@@ -1,15 +1,16 @@
 import styles from "./FormInput.module.css";
 
-function FormInput({idName, value, setValue}) {
+function FormInput({idName, value, setValue, type, children}) {
     return (
         <label htmlFor={idName} className={styles.FormInputContainer}>
             <div className={styles.FormInputIdName}>
-                {idName}
+                {children}
             </div>
 
             <input 
+            id={idName}
             className={styles.FormInput}  
-            type="text" 
+            type={type} 
             value={value}
             onChange={(e) => setValue(e.target.value)}
             />

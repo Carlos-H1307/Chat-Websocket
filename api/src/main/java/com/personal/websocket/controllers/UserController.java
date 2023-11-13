@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api")
 public class UserController {
 
   @Autowired
   private UserService service;
 
-  @CrossOrigin(origins = "*")
   @GetMapping("/user")
   public List<UserEntity> getAll() {
     return service.getAll();
