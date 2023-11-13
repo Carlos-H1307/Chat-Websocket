@@ -21,22 +21,23 @@ function Login() {
       e.preventDefault();
         try{
 
-          const data = {
-            nome, senha
-          }
+          const data = { nome, senha };
 
-          fetch("http://localhost:8080/api/auth",  {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          })
-          .then(y => y.json())
-          .then(x => {
-            console.log(x)
-            sessionStorage.setItem("token", x.token)
-          })
+          const res = Api.post('/auth', data);
+          console.log(res.data)
+          sessionStorage.setItem("token", res.data.token);
+          // fetch("http://localhost:8080/api/auth",  {
+          //   method: "POST",
+          //   headers: {
+          //       "Content-Type": "application/json"
+          //   },
+          //   body: JSON.stringify(data)
+          // })
+          // .then(y => y.json())
+          // .then(x => {
+          //   console.log(x)
+          //   sessionStorage.setItem("token", x.token)
+          // })
 
           setAuth(true)
     
@@ -55,7 +56,7 @@ function Login() {
             <FormInput idName={"Password"} type='password' value={senha} setValue={setSenha}></FormInput>
             <FormButton text={"Send"}></FormButton>
           </Form>
-          <Link>Register</Link>
+          <Link to={'/register'}>Register</Link>
         </div>
       </div>
     )
