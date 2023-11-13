@@ -26,8 +26,8 @@ public class SecurityConfigurations {
     http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers(HttpMethod.POST, "/api/auth").permitAll()
-                    .requestMatchers(HttpMethod.GET, "/user").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/auth", "/api/register").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/user").permitAll()
                     .anyRequest().authenticated()
             )
             .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
