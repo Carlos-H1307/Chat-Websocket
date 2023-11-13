@@ -14,14 +14,30 @@ function Login() {
     const {theme} = useTheme();
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
+    const [nome, setNome] = useState("");
+    const [senha, setSenha] = useState("");
+    
     const login = async (e) => {
       e.preventDefault();
         try{
-          //await Api.post('/user/login', { username, password }, {'Access-Control-Allow-Origin': 'localhost:3000'})
-    
+
+          const data = {
+            nome, senha
+          }
+
+          fetch("http://localhost:8080/api/auth",  {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          })
+          .then(y => y.json())
+          .then(x => {
+            console.log(x)
+            sessionStorage.setItem("token", x.token)
+          })
+
           setAuth(true)
     
           navigate('/home')
@@ -35,8 +51,8 @@ function Login() {
       <div id={styles.LoginMain}>
         <div id={styles.LoginContainer}>
           <Form onSubmit={login}>
-            <FormInput idName={"Username"} type='text' value={username} setValue={setUsername}></FormInput>
-            <FormInput idName={"Password"} type='password' value={password} setValue={setPassword}></FormInput>
+            <FormInput idName={"Username"} type='text' value={nome} setValue={setNome}></FormInput>
+            <FormInput idName={"Password"} type='password' value={senha} setValue={setSenha}></FormInput>
             <FormButton text={"Send"}></FormButton>
           </Form>
           <Link>Register</Link>
