@@ -19,31 +19,19 @@ function Login() {
     
     const login = async (e) => {
       e.preventDefault();
+      let res;
         try{
-
           const data = { nome, senha };
 
-          const res = Api.post('/auth', data);
-          console.log(res.data)
-          sessionStorage.setItem("token", res.data.token);
-          // fetch("http://localhost:8080/api/auth",  {
-          //   method: "POST",
-          //   headers: {
-          //       "Content-Type": "application/json"
-          //   },
-          //   body: JSON.stringify(data)
-          // })
-          // .then(y => y.json())
-          // .then(x => {
-          //   console.log(x)
-          //   sessionStorage.setItem("token", x.token)
-          // })
+          res = await Api.post('/auth', data);
+          const obj = res.data;
+          sessionStorage.setItem("token", obj.token);
 
           setAuth(true)
     
           navigate('/home')
         }catch (error) {
-            console.error(error);
+            console.log("Unauthorized");
           //toast.error(e.response.data.error)
         }
       }
