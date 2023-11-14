@@ -24,7 +24,11 @@ function Login() {
           const data = { nome, senha };
 
           res = await Api.post('/auth', data);
-          const obj = res.data;
+          //const obj = res.data;
+
+          
+          //testando socket com variavel local
+          let obj = {token: nome};
           
           sessionStorage.setItem("token", obj.token);
 

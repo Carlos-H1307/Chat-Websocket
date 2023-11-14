@@ -10,6 +10,7 @@ import Switch from './components/Switch/Switch';
 import { useTheme } from './context/ThemeContext';
 import './index.css';
 import Header from './pages/Header/Header';
+import { MessageProvider } from './context/MessageContext';
 
 const App = () => {
 
@@ -28,7 +29,7 @@ const App = () => {
             <Header/>
             <Routes>
               <Route path="/home" element={<Home/>} />
-              <Route path="/chat" element={<Chat/>} />
+              <Route path="/chat/:id" element={<MessageProvider> <Chat/> </MessageProvider>} />
               <Route path='/*' element={<Home />} />
             </Routes>
           </Router>

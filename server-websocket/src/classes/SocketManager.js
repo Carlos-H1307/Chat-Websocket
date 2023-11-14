@@ -9,26 +9,41 @@ class SocketManager{
         this.io = new Server(httpServer, config);
 
         this.io.use( this.socketAuth );
-    
-        this.sockets = this.io.sockets.sockets;
-
+        
+        this.sockets = new Map();
+        
         this.io.on("connection", (socket) => {
-            socket.on("private message", (params) => this.privateMessage );
+            //userToken tem q ser userId
+            this.sockets.set(socket.handshake.auth.userToken, socket);
+
+            socket.on("disconnect", () => { this.sockets.delete(socket.id) });
+
+            socket.on("private message", (data) => this.privateMessage(socket, data) );
             
         });
     }
+    
+    privateMessage(socket, data){
+        let {content, to} = data;
+        let toSocket = this.sockets.get(to);
+        
+        if(toSocket){
+            toSocket.emit("private message", {
+                content,
+                from: socket.handshake.auth.userToken,
+            });
+        }
 
-    privateMessage({content, to}){
-        this.sockets.forEach((socket) => {
-            if (socket.user_id === to){
+        // this.sockets.forEach((socket) => {
+        //     if (socket.user_id === to){
 
-                socket.emit("private message", {
-                    content,
-                    from: socket.id,
-                });
+        //         socket.emit("private message", {
+        //             content,
+        //             from: socket.id,
+        //         });
 
-            }
-        });
+        //     }
+        // });
     }
 
     socketAuth(socket, next){

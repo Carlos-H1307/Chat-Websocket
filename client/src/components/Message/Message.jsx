@@ -1,17 +1,13 @@
 import styles from "./message.module.css";
 
-function Message(msg) {
-    let message = {
-        username: "carlos",
-        msg: "bom dia "
-    }
+function Message({msg}) {
     return (
         <div className={styles.message}>
             <div className={styles.message_username}>
-                {message.username}
+                {msg.from}
             </div>
             <div className={styles.message_msg}>
-                <div>{message.msg}</div>
+                <div>{msg.content}</div>
             </div>
         </div>
     )

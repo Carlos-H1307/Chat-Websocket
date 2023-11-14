@@ -6,7 +6,7 @@ import SwipeButton from '../../components/Buttons/SwipeButton/SwipeButton';
 import {useAuth} from '../../context/AuthContext';
 
 function Header(){
-    const [isSwiped, setSwiped] = useState('true');
+    const [isSwiped, setSwiped] = useState('false');
     const { setAuth, logout, isAuth } = useAuth();
     const navigate = useNavigate();
 
