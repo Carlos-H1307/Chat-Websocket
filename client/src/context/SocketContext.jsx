@@ -2,18 +2,18 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import {useAuth} from "./AuthContext";
 import { io } from "socket.io-client";
 const SocketContext = createContext('socket');
+const socket = io(import.meta.env.VITE_SOCKET_SERVER_BASE_URL, { autoConnect: false });
 
-let socket = io(import.meta.env.VITE_SOCKET_SERVER_BASE_URL, { autoConnect: false });
+console.log(socket)
 
 export const SocketProvider = ({children}) => {
     const {user} = useAuth();
-    //socket.auth = user;
+    socket.auth = {userToken: user};
+    console.log(socket)
     socket.connect();
 
-    console.log(socket)
-
     socket.on("private message", ({ content, from }) => {
-        console.log(content);
+        console.log(content, from);
     });
 
     return(

@@ -20,7 +20,6 @@ const App = () => {
     return <div />
   }
 
-  console.log(isAuth)
   if(isAuth){
     return(
       <SocketProvider >

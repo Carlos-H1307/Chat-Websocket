@@ -8,7 +8,7 @@ class SocketManager{
     constructor(httpServer){
         this.io = new Server(httpServer, config);
 
-        //this.io.use( this.socketAuth );
+        this.io.use( this.socketAuth );
     
         this.sockets = this.io.sockets.sockets;
 
@@ -32,15 +32,15 @@ class SocketManager{
     }
 
     socketAuth(socket, next){
-        const user_id = socket.handshake.auth.user_id;
+        const userToken = socket.handshake.auth.userToken;
 
-        console.log(user_id + ': conectado.')
+        console.log(userToken + ': conectado.')
           
-        if (!user_id){
+        if (!userToken){
           return next(new Error("invalid username"));
         }
 
-        socket.user_id = user_id;
+        socket.userToken = userToken;
         next();
     }
 
