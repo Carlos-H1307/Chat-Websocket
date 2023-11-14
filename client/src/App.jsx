@@ -19,6 +19,8 @@ const App = () => {
   if(isLoading) {
     return <div />
   }
+
+  console.log(isAuth)
   if(isAuth){
     return(
       <SocketProvider >

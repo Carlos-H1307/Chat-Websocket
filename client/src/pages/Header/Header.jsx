@@ -7,16 +7,18 @@ import {useAuth} from '../../context/AuthContext';
 
 function Header(){
     const [isSwiped, setSwiped] = useState('true');
-    const { setAuth } = useAuth();
+    const { setAuth, logout, isAuth } = useAuth();
     const navigate = useNavigate();
 
     function toggleHeader(){
         isSwiped=='true' ? setSwiped('false') : setSwiped('true');
     }
 
-    function logout(){
-        setAuth(false);
-        navigate('/login');
+    async function doLogout(){
+        let res = await logout();
+        if( res == true ){
+            navigate('/login');
+        }
     }
 
     return(
@@ -28,13 +30,21 @@ function Header(){
                     <Switch></Switch>
                 </div>
                 <div id={styles.HeaderContentLinks}>
-                    <div id={styles.HeaderContentLinksAbove} className={styles.Link}>
-                        <Link to='/home'>Home</Link>
-                        <Link to='/chat'>Chat</Link>
-                    </div>
-                    <div id={styles.HeaderContentLinksUnder} className={styles.Link}>
-                        <Link onClick={logout}>Logout</Link>
-                    </div>
+                    {
+                        isAuth ? (
+                            <>
+                                <div id={styles.HeaderContentLinksAbove} className={styles.Link}>
+                                    <Link to='/home'>Home</Link>
+                                    <Link to='/chat'>Chat</Link>
+                                </div>
+                                <div id={styles.HeaderContentLinksUnder} className={styles.Link}>
+                                    <Link onClick={doLogout}>Logout</Link>
+                                </div>
+                            </>
+                        ) : (
+                            <></>
+                        )
+                    }
                 </div>
             </div>
         </div>

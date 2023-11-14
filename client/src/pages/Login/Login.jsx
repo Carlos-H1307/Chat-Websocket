@@ -10,7 +10,7 @@ import FormButton from "../../components/FormButton/FormButton";
 import styles from './Login.module.css';
 
 function Login() {
-    const {setAuth} = useAuth();
+    const {setAuth, setUser} = useAuth();
     const {theme} = useTheme();
     const navigate = useNavigate();
 
@@ -25,13 +25,15 @@ function Login() {
 
           res = await Api.post('/auth', data);
           const obj = res.data;
+          
           sessionStorage.setItem("token", obj.token);
 
-          setAuth(true)
-    
+          setAuth(true);
+          setUser(obj.token);
+
           navigate('/home')
         }catch (error) {
-            console.log("Unauthorized");
+            console.error(error);
           //toast.error(e.response.data.error)
         }
       }

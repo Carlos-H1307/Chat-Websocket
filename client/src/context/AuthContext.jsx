@@ -1,28 +1,34 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import Api from "../services/Api";
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext('auth');
 
 export const AuthProvider = ({children}) => {
 
-  const [auth, setAuth]           = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser]           = useState(null);
+  let   storageToken    = sessionStorage.getItem('token');
+  let   isAlreadyAuth   = false;
+  const [user, setUser] = useState(storageToken);
+  
+  if(user){
+    isAlreadyAuth = true;
+  }
 
-  useEffect(() => {
+  const [isAuth, setAuth]         = useState(isAlreadyAuth);
+  const [isLoading, setIsLoading] = useState(false);
 
-    Api.get('/user').then((res) => {
-      setUser(res.data.user);
-      setAuth(true);
-      setIsLoading(false);
-    }).catch(() => {
-      setIsLoading(false);
-    })
 
-  }, [])
+
+  async function logout(){
+    sessionStorage.removeItem('token');
+    setAuth(false);
+
+    return(true);
+  }
+
 
   return (
-    <AuthContext.Provider value={{isAuth: auth, isLoading, setAuth, setIsLoading, user}}>
+    <AuthContext.Provider value={{isAuth, isLoading, setAuth, setIsLoading, user, setUser, logout}}>
       {children}
     </AuthContext.Provider>
   )

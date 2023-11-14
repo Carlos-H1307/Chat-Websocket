@@ -1,12 +1,26 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext('theme');
 
 export const ThemeProvider = ({children}) => {
+  let storageTheme = sessionStorage.getItem('theme');
 
-  const [theme, setTheme] = useState('Dark');
+  if( !storageTheme ){
+    storageTheme = 'Dark';
+  }
 
-  const toggleTheme = () => theme==='Dark' ? setTheme('Light') : setTheme('Dark'); 
+  const [theme, setTheme] = useState(storageTheme);
+
+  function toggleTheme(){
+    if(theme==='Dark'){
+      sessionStorage.setItem('theme', 'Light');
+      setTheme('Light');
+    }else{
+      sessionStorage.setItem('theme', 'Dark');
+      setTheme('Dark');
+    }
+
+  }
 
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
