@@ -23,7 +23,7 @@ function Login() {
         try{
           const data = { nome, senha };
 
-          res = await Api.post('/auth', data);
+          //res = await Api.post('/auth', data);
           //const obj = res.data;
 
           
